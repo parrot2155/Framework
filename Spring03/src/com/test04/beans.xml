@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="park" class="com.test04.Emp">
+		<property name="name" value="박태욱"/>
+		<property name="salary" value="3000000"/>
+	</bean>
+	
+	<bean id="parktw" class="com.test04.Developer">
+		<constructor-arg name="emp" ref="park"/>
+		<constructor-arg name="dept" value="개발자"/>
+	</bean>		<!-- bean을 참조함. -->
+	
+	
+	<!-- Engineer 클래스 빈 생성 -->
+	<!-- 김태욱, 3500000, 기술자 -->
+	<bean id="park1" class="com.test04.Emp">
+		<property name="name" value="김태욱"/>
+		<property name="salary" value="3500000"/>
+	</bean>
+	
+	<bean id="kim" class="com.test04.Engineer">
+		<constructor-arg name="emp" ref="park1"/>
+		<constructor-arg name="dept" value="기술자"/>
+	</bean>
+
+
+</beans>
