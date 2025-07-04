@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="score1" class="com.test3.Score">
+		<constructor-arg name="name" value="홍길동"/>
+		<constructor-arg name="kor" value="90"/>
+		<constructor-arg name="eng" value="70"/>	<!-- index로 지정해도 되고, name으로 지정해도 된다. -->
+		<constructor-arg name="math" value="50"/>
+	</bean>
+	<bean id="score2" class="com.test3.Score">
+		<constructor-arg name="name" value="김길동"/>
+		<constructor-arg name="kor" value="80"/>
+		<constructor-arg name="eng" value="50"/>	<!-- index로 지정해도 되고, name으로 지정해도 된다. -->
+		<constructor-arg name="math" value="20"/>
+	</bean>
+	<bean id="score3" class="com.test3.Score">
+		<constructor-arg name="name" value="박길동"/>
+		<constructor-arg name="kor" value="60"/>
+		<constructor-arg name="eng" value="50"/>	<!-- index로 지정해도 되고, name으로 지정해도 된다. -->
+		<constructor-arg name="math" value="40"/>
+	</bean>
+	<bean id="score4" class="com.test3.Score">
+		<constructor-arg name="name" value="최길동"/>
+		<constructor-arg name="kor" value="60"/>
+		<constructor-arg name="eng" value="0"/>	<!-- index로 지정해도 되고, name으로 지정해도 된다. -->
+		<constructor-arg name="math" value="0"/>
+	</bean>
+	
+</beans>
