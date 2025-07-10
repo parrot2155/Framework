@@ -1,0 +1,9 @@
+SpringMVC03
+
+1.pom.xml : ojdbc(db연결하기 위한 라이브러리), mybatis-spring, commons-dbcp, spring-orm
+2.web.xml
+3./WEB-INF/spring/sqls/sql.txt
+4. dto, dao, service, controller 만들자
+5. src/main/resources/mybatis/board-mapper.xml
+6. /WEB-INF/spring/sqls/config.xml
+7. servlet-context.xml, applicationContext.xml
