@@ -50,14 +50,55 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/insert.do")
-	public String insert(BoardDto dto, Model model) {
+	public String insert(BoardDto dto) {
 		logger.info("INSERT");
 		
 		int res = service.insert(dto);
 		
-		return "list.do";
+		if(res>0) {
+			return "redirect:list.do";	//redirect -> 다시 리다이렉트 처리하려고한다.
+		}else {
+			return "redirect:insertform.do";
+		}
 	}
 	
+	@RequestMapping("/updateform.do")
+	public String updateForm(int myno,Model model) {
+		logger.info("UPDATE FORM");
+		
+		BoardDto res = service.selectOne(myno);
+		model.addAttribute("dto",res);
+		
+		return "mvcupdate";
+	}
+	
+	@RequestMapping("/update.do")
+	public String update(BoardDto dto) {
+		logger.info("UPDATE");
+		
+		int res = service.update(dto);
+		
+		if(res>0) {
+			return "redirect:list.do";
+		}else {
+			return "redirect:updateform.do?myno="+dto.getMyno();
+		}
+	}
+	
+	@RequestMapping("/delete.do")
+	public String delete(int myno) {
+		logger.info("DELETE");
+		
+		int res = service.delete(myno);
+		
+		if(res>0) {
+			return "redirect:list.do";
+		}else {
+			return "redirect:detail.do?myno="+myno;
+		}
+		
+		
+	}
 }
 
 

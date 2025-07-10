@@ -15,6 +15,15 @@
   	INSERT INTO MYBOARD VALUES(SEQ_MY.NEXTVAL, #{myname}, #{mytitle}, #{mycontent}, SYSDATE)
   </insert>
   
+  <update id="update" parameterType="BoardDto">
+  	UPDATE MYBOARD SET MYTITLE=#{mytitle}, MYCONTENT=#{mycontent} WHERE MYNO=#{myno}
+  </update>
+  
+  <delete id="delete">
+  	DELETE FROM MYBOARD WHERE MYNO=#{myno}
+  </delete>
+  
+  
   <resultMap id="boardMap" type="boardDto">
   	<result property="myno" column="MYNO"/>
   	<result property="myname" column="MYNAME"/>
