@@ -1,0 +1,16 @@
+SpringMVC03
+
+1.pom.xml : ojdbc(db연결하기 위한 라이브러리), mybatis-spring, commons-dbcp, spring-orm
+2.web.xml
+3./WEB-INF/spring/sqls/sql.txt
+4. dto, dao, service, controller 만들자
+5. src/main/resources/mybatis/board-mapper.xml
+6. /WEB-INF/spring/sqls/config.xml
+7. servlet-context.xml, applicationContext.xml
+
+_filter
+필터를 여러개 넣을 수 있다-> 필터 체인
+인코딩, 인증, 권한에 대한 내용 가능
+
+8. com/mvc/upgrade/common//filter/LogFilter.java(impl javax.servlet.Filter)
+9. web.xml : 필터 추가
