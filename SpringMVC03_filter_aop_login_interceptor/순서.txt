@@ -30,6 +30,37 @@ _login
 17. src/main/resources/mybatis/member-mapper.xml
 18. WEB-INF/spring/sqls/config.xml
 
+_interceptor(필터랑 비슷하지만 위치가 다름.) 필터는 클라이언트와 디스패처 서블릿 사이에 들어가지만, 얘는 서블릿이랑 컨트롤러 사이에 들어간다. 말그대로 제어부분 앞에서 가로채서 지가 한번 더 확인하거나 작업을 수행한다. 로그를 확인하거나 권한 확인하거나 데이터 검증을 하거나.
+20. com/mvc/upgrade/common/interceptor/LoginInterceptor
+21. servlet-context.xml 새롭게 만들어도 된다.
+
+
+interceptor 스프링에서 컨트롤러에 들어가는 요청을 검증함. ex)들어오는 요청이 현재 로그인 상태인지(세션)
+filter 들어오는 모든 요청을 거쳐감. 여러 filter-chaining이 가능함. ex)로그인 시 내용이 맞는지
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
