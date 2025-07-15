@@ -1,0 +1,5 @@
+rest -> restfull 구현
+
+요청은 get과 post만 사용했었다.
+
+rest를 사용할것이다. res는 명사로 주고받는다.

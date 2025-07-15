@@ -1,0 +1,67 @@
+SpringMVC03
+
+1.pom.xml : ojdbc(db연결하기 위한 라이브러리), mybatis-spring, commons-dbcp, spring-orm
+2.web.xml
+3./WEB-INF/spring/sqls/sql.txt
+4. dto, dao, service, controller 만들자
+5. src/main/resources/mybatis/board-mapper.xml
+6. /WEB-INF/spring/sqls/config.xml
+7. servlet-context.xml, applicationContext.xml
+
+_filter
+필터를 여러개 넣을 수 있다-> 필터 체인
+인코딩, 인증, 권한에 대한 내용 가능
+
+8. com/mvc/upgrade/common//filter/LogFilter.java(impl javax.servlet.Filter)
+9. web.xml : 필터 추가
+
+
+_aop
+10. pom.xml : aspectjweaver, aspectjrt 
+11. com/mvc/upgrade/common/aop/LogAop.java
+12. WEB-INF/spring/appServlet/aop-context.xml
+13. web.xml로 가서 추가해라.
+
+
+_login
+14. pom.xml : jackson-core, jackson-databind
+15. WEB-INF/spring/sqls/sql.txt
+16. dto, dao, service, controller
+17. src/main/resources/mybatis/member-mapper.xml
+18. WEB-INF/spring/sqls/config.xml
+
+_interceptor(필터랑 비슷하지만 위치가 다름.) 필터는 클라이언트와 디스패처 서블릿 사이에 들어가지만, 얘는 서블릿이랑 컨트롤러 사이에 들어간다. 말그대로 제어부분 앞에서 가로채서 지가 한번 더 확인하거나 작업을 수행한다. 로그를 확인하거나 권한 확인하거나 데이터 검증을 하거나.
+20. com/mvc/upgrade/common/interceptor/LoginInterceptor
+21. servlet-context.xml 새롭게 만들어도 된다.
+interceptor 스프링에서 컨트롤러에 들어가는 요청을 검증함. ex)들어오는 요청이 현재 로그인 상태인지(세션)
+filter 들어오는 모든 요청을 거쳐감. 여러 filter-chaining이 가능함. ex)로그인 시 내용이 맞는지
+
+
+_transaction
+22. (Board) dao, service, controller
+23. index.html
+24. com/mvc/upgrade/common/interceptor/LogInterceptor
+25. servlet-context.xml : tx
+26. applicationContext.xml : transactionManager
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
