@@ -35,13 +35,13 @@ public class MemberServiceImpl implements MemberService{
 	@Override
 	public int update(MemberDto dto) {
 		
-		return 0;
+		return dao.update(dto);
 	}
 
 	@Override
 	public int delete(MemberDto dto) {
 		
-		return 0;
+		return dao.delete(dto);
 	}
 
 }

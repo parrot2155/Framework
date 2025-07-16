@@ -31,9 +31,13 @@ public class MemberDaoImpl implements MemberDao{
 
 	@Override
 	public MemberDto selectOne(String memid) {
-		String sql = "SELECT * FROM MEMBER WHERE MEMID = ?";
-        MemberDto res = jdbcTemplate.queryForObject(sql, rowMapper, memid);
-		return res;
+	    String sql = "SELECT * FROM MEMBER WHERE MEMID = ?";
+	    try {
+	        return jdbcTemplate.queryForObject(sql, rowMapper, memid);
+	    } catch (org.springframework.dao.EmptyResultDataAccessException e) {
+	        System.out.println("로그인 실패");
+	        return null;
+	    }
 	}
 
 	@Override
@@ -51,8 +55,8 @@ public class MemberDaoImpl implements MemberDao{
 
 	@Override
 	public int delete(MemberDto dto) {
-		
-		return 0;
+	    String sql = "DELETE FROM MEMBER WHERE MEMID = ?";
+	    return jdbcTemplate.update(sql, dto.getMemid());
 	}
 
 }

@@ -53,16 +53,36 @@ public class BoardController {
     
     
 
-    @RequestMapping("/update/{boardno}")
+    @RequestMapping("/detail/updateform/{boardno}")
     public String updateForm(@PathVariable int boardno, Model model) {
         model.addAttribute("dto", service.selectOne(boardno));
-        return "update";
+        return "updateform";
     }
 
-    @RequestMapping("/update")
+    @RequestMapping("/detail/updateform/update")
     public String update(BoardDto dto) {
-        service.update(dto);
-        return "redirect:/board/list";
+        int res = service.update(dto);
+        
+        if(res>0) {
+        	System.out.println("업데이트 성공");
+        	return "redirect:/board/list";
+        }else {
+        	System.out.println("업데이트 실패");
+        	return "redirect:/board/list";
+        }
+    }
+    
+    @RequestMapping("detail/delete/{testno}")
+    public String delete(@PathVariable int testno) {
+    	int res = service.delete(testno);
+    	
+    	if(res>0) {
+    		System.out.println("삭제 성공");
+    		return "redirect:/board/list";
+    	}else {
+    		System.out.println("삭제 실패");
+    		return "redirect:/board/list";
+    	}
     }
     
     

@@ -13,6 +13,7 @@
 		<c:if test="${not empty sessionScope.loginMember}">
 			<b>${sessionScope.loginMember.memname}</b> 님 |
 			<input type="button" value="로그아웃" onclick="location.href='/spring/logout'">
+			<input type="button" value="회원 탈퇴" onclick="location.href='/spring/deletemem'">
 		</c:if>
 	</div>
 	<h1>List</h1>

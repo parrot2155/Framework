@@ -5,10 +5,12 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mvc.member.dto.MemberDto;
 import com.mvc.member.service.MemberService;
@@ -19,6 +21,10 @@ public class HomeController {
 	
 	@Autowired
 	private MemberService service;
+	
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
+	
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
@@ -33,7 +39,7 @@ public class HomeController {
 	        return "redirect:board/list";
 	    } else {
 	    	System.out.println("로그인 실패");
-	        return "index";
+	        return "redirect:index.jsp";
 	    }
 	}
 	
@@ -62,4 +68,21 @@ public class HomeController {
 	    return "redirect:/index.jsp";
 	}
 	
+	@RequestMapping(value="/deletemem", method=RequestMethod.GET)
+    public String deleteMember(HttpSession session, RedirectAttributes redirectAttr) {
+        MemberDto loginMember = (MemberDto) session.getAttribute("loginMember");
+        if(loginMember == null) {
+            return "redirect:/index.jsp";
+        }
+        int res = service.delete(loginMember);
+        
+        if(res > 0) {
+            session.invalidate();
+            redirectAttr.addFlashAttribute("msg", "회원 탈퇴가 완료되었습니다.");
+            return "redirect:/index.jsp";
+        } else {
+            redirectAttr.addFlashAttribute("msg", "회원 탈퇴에 실패했습니다. 다시 시도해주세요.");
+            return "redirect:/index.jsp";
+        }
+    }
 }
