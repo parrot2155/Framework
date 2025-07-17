@@ -25,25 +25,25 @@ public class MyBizImpl implements MyBiz{
 	@Override
 	public MyDto selectOne(int myno) {
 	
-		return null;
+		return mapper.selectOne(myno);
 	}
 
 	@Override
 	public int insert(MyDto dto) {
 
-		return 0;
+		return mapper.insert(dto);
 	}
 
 	@Override
 	public int update(MyDto dto) {
 
-		return 0;
+		return mapper.update(dto);
 	}
 
 	@Override
 	public int delete(int myno) {
 
-		return 0;
+		return mapper.delete(myno);
 	}
 
 }
