@@ -11,7 +11,7 @@ import com.boot.jdbc.model.dto.MyDto;
 public interface MyBoardMapper {
 	
 	@Select(" SELECT * FROM MYBOARD ORDER BY MYNO DESC ")
-	List<MyDto> selectList();	//리절트 타입, 이름이 메퍼의 아이디라고 생각하면 됨.
+	List<MyDto> selectList();	//result 타입, 이름이 메퍼의 아이디라고 생각하면 됨.
 	
 	
 	

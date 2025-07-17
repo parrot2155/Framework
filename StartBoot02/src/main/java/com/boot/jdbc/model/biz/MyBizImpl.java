@@ -5,19 +5,21 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.boot.jdbc.model.dao.MyDao;
 import com.boot.jdbc.model.dto.MyDto;
+import com.boot.jdbc.model.mapper.MyBoardMapper;
 
 @Service
 public class MyBizImpl implements MyBiz{
 	
+
+	
 	@Autowired
-	private MyDao dao;
+	private MyBoardMapper mapper;
 	
 	@Override
 	public List<MyDto> selectList() {
 
-		return null;
+		return mapper.selectList();		//지금은 service-dao-mapper이지만 보통 service에서 바로 mapper호출한다.
 	}
 
 	@Override

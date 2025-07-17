@@ -17,7 +17,7 @@ public class MyDaoImpl implements MyDao{
 	@Override
 	public List<MyDto> selectList() {
 		
-		return null;
+		return mapper.selectList();
 	}
 
 	@Override
