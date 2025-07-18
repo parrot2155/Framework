@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>expression</h1>
+	<p th:text="'Hello, '+${name}">Hello, $name</p>
+	<p th:text="|Hello, ${name}|">Hello, $name</p>
+	<hr>
+	<p th:text="${dto.subject}">dto.subject</p>
+	<p th:text="${dto.seq}"></p>
+
+	<div th:object="${dto}">
+		<p th:text="*{subject}"></p>
+		<!-- 설정해둔 dto객체에서 subject를 꺼내오겠다. -->
+		<p th:text="*{seq}"></p>
+		<!-- 단축표현이라고도 한다. -->
+	</div>
+
+
+	<!-- 이런 느낌 -->
+	<form th:object="${dto}">
+		<input type="text" th:field="*{subject}"> <input type="text"
+			th:field="*{seq}">
+	</form>
+
+	<hr>
+
+	<table>
+		<tr>
+			<th>Subject</th>
+			<th>Seq</th>
+		</tr>
+		<tr th:each="dto:${list}">
+			<td th:text="${dto.subject}">과목</td>
+			<td th:text="${dto.seq}">번호</td>
+		</tr>
+	</table>
+	<hr>
+	
+	<div th:object="${dto}">
+		<p th:if="*{seq gt 30}">	<!-- false이면 다음이 실행되지 않는다. -->
+			<span>seq가 30보다 크다</span>
+		</p>	<!--gt : greater then 의 줄임말이라고 함 -->
+		<p th:if="*{seq lt 30}">	
+			<span>seq가 30보다 작다</span>
+		</p>
+		<p th:unless="*{seq gt 30}">	
+			<span>seq가 30보다 작다</span>
+		</p>
+	</div>
+	&gt; &lt; &ge; &le; &eq;<!-- 크거나 같다. 작거나 같다, 같다-->
+	&ne;<!-- 같지않다. -->
+	
+	<hr>
+	
+	<div th:each="num:${#numbers.sequence(1,3)}">	<!-- 반복한다. -->
+		<th:block th:switch="${num}">
+			<p th:case="1" th:text="|this is ${num}|">
+			<p th:case="2" th:text="|second ${num}|">
+			<p th:case="3" th:text="|bye ${num}|">
+		</th:block>
+	</div>
+	<hr>
+	
+	<a th:href="@{/}">index</a>
+	<a th:href="@{/test(seq=${dto.seq})}">test</a>	<!-- 이동시킬때 이렇게 쿼리스트링으로 파라미터를 넘겨줄 수 있다. -->
+	
+	<form th:object="${dto}" th:action="@{/test}">
+		<input type="text" th:field="*{subject}"> <input type="text"
+			th:field="*{seq}">
+		<input type="submit" value="확인">
+	</form>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

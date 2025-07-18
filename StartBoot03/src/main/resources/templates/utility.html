@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xml:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>utility</h1>	<!-- 각종 타임리프 기능들을 알아보자 -->
+	<!-- 유틸리티객체(타임리프 내장 객체): #객체명-->
+	<p th:text="${#calendars.format( #calendars.createNow(), 'yyyy-MM-dd HH:mm')}"> #date objects</p>
+	<p th:text="${#numbers.formatInteger(345.1234, 5)}">#numbers object</p>
+	<p th:text="${#strings.toUpperCase('hello, spring boot and thymeleaf')}">#string object</p>
+	<!-- 사이트 문서를 보면 많은 기능들을 알 수 있다. -->
+</body>
+</html>
