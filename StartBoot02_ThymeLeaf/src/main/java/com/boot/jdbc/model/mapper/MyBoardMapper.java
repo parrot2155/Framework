@@ -22,7 +22,7 @@ public interface MyBoardMapper {
 	@Insert(" INSERT INTO MYBOARD VALUES( SEQ_MY.NEXTVAL, #{myname}, #{mytitle}, #{mycontent}, SYSDATE)")
 	int insert(MyDto dto);
 	
-	@Update(" UPDATE MYBOARD SET MYTITLE=#{mytitle}, MYCONTENT=#{mycontent} WHERE MYNO=#{myno} ")
+	@Update(" UPDATE MYBOARD SET MYNAME=#{myname}, MYTITLE=#{mytitle}, MYCONTENT=#{mycontent} WHERE MYNO=#{myno} ")
 	int update(MyDto dto);
 	
 	@Delete(" DELETE FROM MYBOARD WHERE MYNO=#{myno}")

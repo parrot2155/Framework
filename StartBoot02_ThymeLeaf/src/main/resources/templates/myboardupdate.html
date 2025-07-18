@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>게시물 수정</title>
+</head>
+<body>
+	<h1>게시물 수정</h1>
+	<form th:action="@{/myboard/update}" method="post">
+		<!-- th:object="${dto}" <--이렇게 넘겨줄수도 있음 -->
+		<input type="hidden" name="myno" th:value="${dto.myno}">
+		<table>
+			<tr>
+				<th>번호</th>
+				<td th:text="${dto.myno}">myno</td>
+			</tr>
+			<tr>
+				<th>작성자</th>
+				<td><input type="text" name="myname" th:value="${dto.myname}"></td>
+			</tr>
+			<tr>
+				<th>제목</th>
+				<!-- th:field="*{mytitle}" <--이렇게도 할 수 있음 -->
+				<td><input type="text" name="mytitle" th:value="${dto.mytitle}"></td>
+			</tr>
+			<tr>
+				<th>내용</th>
+				<td><textarea cols="40" rows="10" name="mycontent"
+						th:text="${dto.mycontent}"></textarea></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" value="수정 완료"></td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
