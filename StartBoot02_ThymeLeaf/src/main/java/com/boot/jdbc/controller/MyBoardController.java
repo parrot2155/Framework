@@ -93,5 +93,5 @@ public class MyBoardController {
 			return "redirect:/myboard/detail?myno=" + myno;
 		}
 	}
-
+	
 }
