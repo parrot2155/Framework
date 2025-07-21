@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www/thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>JPA Detail</h1>
+	<table th:object="${dto}" border="1">
+		<tr>
+			<th>Myno</th>
+			<td th:text="*{myno}"></td>
+		</tr>
+		<tr>
+			<th>Myname</th>
+			<td th:text="*{myname}"></td>
+		</tr>
+		<tr>
+			<th>Mytitle</th>
+			<td th:text="*{mytitle}"></td>
+		</tr>
+		<tr>
+			<th>Mycontent</th>
+			<td><textarea rows="10" cols="40" th:text="*{mycontent}" readonly="readonly"></textarea></td>
+		</tr>
+		<tr>
+			<th>Mydate</th>
+			<td th:text="*{mydate}"></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<input type="button" value="수정" th:onclick="|location.href='updateform?myno=*{myno}'|">
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
