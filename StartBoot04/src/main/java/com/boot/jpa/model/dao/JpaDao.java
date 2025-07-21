@@ -2,6 +2,8 @@ package com.boot.jpa.model.dao;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -17,9 +19,11 @@ public interface JpaDao extends JpaRepository<JpaEntity, Integer>{
 	
 	public JpaEntity save(JpaEntity dto);
 	
+	//public JpaEntity update(JpaEntity dto);
 	
+	//public void deleteById(int myno); 
 	
-	
-	
+	@Transactional
+	public void deleteByMyno(int myno);
 	
 }

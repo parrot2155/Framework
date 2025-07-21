@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +25,7 @@ public class JpaController {
 	public String selectAll(Model model) {
 		System.out.println("list");
 		
-		List<JpaEntity> list = dao.findAll();
+		List<JpaEntity> list = dao.findAll(Sort.by(Sort.Direction.DESC, "myno"));
 		
 		//System.out.println(list.get(1).getMytitle());
 		
@@ -72,6 +73,31 @@ public class JpaController {
 		
 		model.addAttribute("dto",dao.findByMyno(myno));
 		return "jpaupdate";
+	}
+	
+	@PostMapping("/update")
+	public String update(JpaEntity dto) {
+		System.out.println("[update]");
+		System.out.println(dto.getMyno());
+		System.out.println(dto.getMytitle());	//따로 dao에서 받아주는 메소드가 필요 없다.
+		dao.save(dto);
+		//jpa에서 save()는  => insert or update 작업을 진행한다.
+		
+		//1. id가 null이면 insert 실행
+		//2. id가 존재, db에 id와 일치하는 데이터 존재 => update 실행			=> jpa가 판단하고 실행한다.
+		
+		//jpaEntity 에서 updatable이 false로 설정되어 있기 때문에 이름과 날짜는 수정되지 않는다.
+		return "redirect:/board/detail?myno="+dto.getMyno();  
+	}
+	
+	@GetMapping("/delete")
+	public String delete(int myno) {
+		System.out.println("[delete]");
+		//dao.deleteById(myno);	//이미 정의되어있는 메서드.
+		
+		dao.deleteByMyno(myno);
+		
+		return "redirect:list";		//따로 dao에서 받아주는 메소드가 필요 없다.
 	}
 	
 }

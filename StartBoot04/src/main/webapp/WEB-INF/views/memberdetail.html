@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Member Detail</h1>
+	<table th:object="${dto}" border="1">
+		<tr>
+			<th>Memberno</th>
+			<td th:text="*{memberno}"></td>
+		</tr>
+		<tr>
+			<th>Memberid</th>
+			<td th:text="*{memberid}"></td>
+		</tr>
+		<tr>
+			<th>Memberpw</th>
+			<td th:text="*{memberpw}"></td>
+		</tr>
+		<tr>
+			<th>Membername</th>
+			<td th:text="*{membername}"></td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<input type="button" value="수정" th:onclick="|location.href='updateform?memberno=*{memberno}'|">
+			</td>
+		</tr>
+	</table>
+</body>
+</html>
