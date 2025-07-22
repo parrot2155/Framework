@@ -22,7 +22,7 @@ public class MemberController {
 	private MemberDao dao;
 	
 	@GetMapping("/list")
-	public String selectAll(Model model) {
+	public String findAll(Model model) {
 		System.out.println("list");
 		
 		List<MemberEntity> list = dao.findAll(Sort.by(Sort.Direction.DESC, "memberno"));
@@ -34,6 +34,26 @@ public class MemberController {
 		
  		return "memberlist";
 	}
+	
+	//테스트 추가. 전체조회 쿼리문으로 해보기
+	@GetMapping("/test")
+	public String selectAll() {
+		System.out.println("list");
+		
+		List<MemberEntity> res = dao.selectAll();
+		
+		MemberEntity dto = res.get(1);
+		System.out.println(dto.getMemberid());
+		System.out.println(dto.getMemberpw());
+		System.out.println(dto.getMembername());
+		System.out.println(dto.getMemberno());
+		
+		
+		
+		
+ 		return "memberlist";
+	}
+	
 	
 	@GetMapping("/detail")
 	public String detail(int memberno, Model model) {

@@ -95,7 +95,10 @@ public class JpaController {
 		System.out.println("[delete]");
 		//dao.deleteById(myno);	//이미 정의되어있는 메서드.
 		
-		dao.deleteByMyno(myno);
+		//dao.deleteByMyno(myno);
+		
+		//내가 쿼리문을 직접 만들어서 실행하려는 의도
+		dao.delBoard(myno);
 		
 		return "redirect:list";		//따로 dao에서 받아주는 메소드가 필요 없다.
 	}
